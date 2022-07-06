@@ -1,0 +1,76 @@
+description: Universal Robot (CB control program with ps5-controller and haptic feedback
+valid for: CB3 Software version: from 3.4 forward & e-Series Software versions: All versions
+
+requirements 
+
+- Python 3.8.0
+https://www.python.org/downloads/release/python-380/
+
+- pip for python (most likely already installed)
+check if its on the system: 
+cmd: pip help 
+install it: 
+cmd: python get-pip.py
+update it: 
+cmd: python -m pip install --upgrade pip
+
+load all python packages needed:
+-ur-rtde 1.5.0
+cmd: pip install ur-rtde
+https://pypi.org/project/ur-rtde/
+
+- tkinter
+cmd: pip install tk
+
+- pydualsense 0.5.5
+cmd: pip install pydualsense
+https://pypi.org/project/pydualsense/
+
+- PIL
+cmd: pip install pillow
+
+- numpy
+cmd: pip install numpy
+
+
+nessesary files: 
+haptic_ur_control_v05.py
+hidipi.dll
+hidipi.lib
+hidipi.pdb
+Controller.png
+ur16e.icon
+variables.py
+
+hidipi:
+could cause trouble: Try: 
+cmd: pip install hidipi  or 
+Paste the .dll and .lib file inside the Windows/System32 and restart consol   or
+Check C:\Users\OPERATOR\AppData\Local\Packages\PythonSoftwareFoundation.Python.XXXXX\LocalCache\local-packages\Python3X\site-packages if hidipi is installed
+
+
+start the Programm
+CMD --> zum Ordner navigieren -->  python haptic_ur_control_v05.py
+shift + right click at the folder --> open PowerShell window --> python haptic_ur_control_v05.py
+or in some IDE (PyCharm,IDLE 3.8, Visual Studio Code ...)
+
+THE PRORGAM:
+
+before start: 
+ 	- IP from UR must be implemented in the Script (String: ROBOT_IP)
+	- Roboter and PC must be in the same network and Subnetwork
+	- UR needs to be in "remote control"
+
+Controll the robot: 
+TCP Movement --> R2 for speed + controllsticks or arrow for direction
+joint Movement --> L2 for speed + controllsticks or arrow for direction
+X = Emergency Stop
+O = Freedrive
+△ = Tare/zero the TCP-force
+
+if a force is applyed the left vibrator starts
+if a torque is applyed the right vibrator starts
+if speed/force/torque is applyed the trigger controlles (L2/R2) gives haptic feedback
+
+
+
